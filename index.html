@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Automatically highlights code https://highlightjs.org/-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/a11y-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js"></script>
+
+<link rel="stylesheet" href="smdesign.css">
+<title>Geom101 - Guide to HTML and CSS</title>
+</head>
+<body>
+<!--HTML BEGINS-->
+<div id="title"><img src="images\FlemingGIS_White.svg" height="32">&nbsp;<span id="titletext">Geom101: Images on Web Pages</span></div>
+
+<h1>Start with HTML</h1>
+<p>Review the introduction page, paying particular attention to understanding:</p>
+<ul>
+<li>the overall structure of HTML,</li>
+<li>HTML elements, and</li>
+<li>Web Browsers</li>
+</ul>
+<p><a rel="noopener" href="https://www.w3schools.com/html/html_intro.asp">https://www.w3schools.com/html/html_intro.asp</a></p>
+<!--CSS BEGINS-->
+<h1>Next, CSS</h1>
+<p>Like HTML, CSS is important for web design. The HTML encapsulates the content (what you want to say) and CSS allows you to format that (colour, font, spacing etc).&nbsp;</p>
+<p>Review the CSS introduction page, focusing on how CSS can restyle the identical HTML content in different ways, and look at the NO Stylesheet option closely.&nbsp;</p>
+<p><a rel="noopener" href="https://www.w3schools.com/css/css_intro.asp">https://www.w3schools.com/css/css_intro.asp</a></p>
+<p>Next look at the CSS Syntax page. Compared to HTML, CSS statements are encapsulated differently (HTML wraps its metadata in <code>&lt;&gt;</code> and CSS uses <code>{}</code>!).&nbsp;</p>
+<p>With respect to the syntax, understand the differences between Selectors, how each Declaration has a property/value pair.&nbsp;</p>
+<p><a rel="noopener" href="https://www.w3schools.com/css/css_syntax.asp">https://www.w3schools.com/css/css_syntax.asp</a></p>
+<!--HTML BASICS BEGINS-->
+<h1>Basics Overview</h1>
+
+<p>In addition to the overall structure of an HTML page (which must be followed!), the most basic HTML tags to encapsulate content are Headings, Paragraphs Links and Images. Each tag has a set of default CSS applied to it, so that is what gives the default look. We will look at these style defaults in the next step, but for now focus on learning about these basic types.&nbsp;</p>
+<p>Headings and Paragraphs (<a rel="noopener" href="https://www.w3schools.com/html/html_blocks.asp">block elements</a>) make up the document body and contained within each of these can be links and images (<a rel="noopener" href="https://www.w3schools.com/html/html_blocks.asp">in-line elements</a>). All HTML tags are generally lowercase, but technically are not case sensitive so would work the same in upper and lower mixed.&nbsp;</p>
+<p><a rel="noopener" href="https://www.w3schools.com/html/html_basic.asp">https://www.w3schools.com/html/html_basic.asp</a></p>
+<h3>Headings</h3>
+<pre><code>&lt;h1&gt;This is my document title&lt;/h1&gt;</code></pre>
+<p>A heading is simple text like a title of a paper or article. There are 6 different levels of headings with default CSS applied to them. You should use Heading 1 first, then a sub-heading within this part of your document would be Heading 2. You can go up to 6-levels deep using the provided heading tags.&nbsp;</p>
+<h3>Paragraphs</h3>
+<pre><code>&lt;p&gt;The quick brown fox jumps over the lazy dog&lt;/p&gt;</code></pre>
+<p>Paragraphs are blocks of text that will automatically "wrap" based on your screen size. You do not include any "enters" or "line feeds"--just provide a string of text. Paragraphs must not contain other paragraphs. To start a new paragraph, just end the current one using the &lt;/p&gt; tag and then start your new one using the &lt;p&gt; tag. Generally, a new paragraph is started on a new line in the code to make it more readable by those reading the source, although that isn't a technical requirement.&nbsp;</p>
+<h3>Links</h3>
+<pre><code>&lt;a href="https://flemingcollege.ca"&gt;This will be the text to click&lt;/a&gt;</code></pre>
+<p>Links (called anchors, why the tag is the letter "A") are the way to point the web page user to another document. Combining multiple pages stored together using links is called a web site. There is a property in the opening tag called <code>href</code> (which is short for http reference) that points to the place you want the reader to go if they click (also called navigate) using this link. Like the P and H# tags before, there is an opening and closing tag with the text you would like the user to click on after the opening tag and before the closing tag. Links should always be within a <a rel="noopener" href="https://www.w3schools.com/html/html_blocks.asp">block level</a> html element, which you now know of two: a heading or paragraph!&nbsp; &nbsp;</p>
+<h3>Images</h3>
+<pre><code>&lt;img src="https://flemingcollege.ca/i/Fleming-Logo-New.svg"&gt;</code></pre>
+<p>An image can be displayed at any point in a document using an <code>img</code> tag. The src property uses a valid HTTP URL to point at which image should be displayed. It is important that the image size (height and width) be appropriate for your document or it might take a long time to download to your browser, or displace your content in ways you do not want.&nbsp;</p>
+<!--HTML ELEMENTS BEGINS-->
+<h1>HTML Elements</h1>
+<p>You know some basic elements, like the <a rel="noopener" href="https://www.w3schools.com/html/html_headings.asp">h1 through h6</a>, <a rel="noopener" href="https://www.w3schools.com/html/html_paragraphs.asp">p</a>, <a rel="noopener" href="https://www.w3schools.com/html/html_images.asp">img</a> and <a rel="noopener" href="https://www.w3schools.com/html/html_links.asp">a</a> elements (click on each to learn more about them!).</p>
+<p>There are many more elements possible and in HTML they all follow the same syntax:</p>
+<p><span style="border-radius: 12px; border: 2px solid #696969; background: #ffffff; padding: 0.4em; width: auto; font-weight: bold; height: 1.1em; font-size: 0.7em; color: #000000;">Review</span> <a rel="noopener" href="https://www.w3schools.com/html/html_elements.asp">https://www.w3schools.com/html/html_elements.asp</a></p>
+<p><span style="border-radius: 12px; border: 2px solid #9d1fd4; background: #ffffff; padding: 0.4em; width: auto; font-weight: bold; height: 1.1em; font-size: 0.7em; color: #9d1fd4;">Understand</span> Key components in this page to focus on:</p>
+<ul>
+<li>The structure of an HTML element</li>
+<li>That elements can have opening and ending tags; some need both and some are called empty tags.&nbsp;</li>
+<li>Case sensitivity of HTML</li>
+<li>How to look up the reference of all tags</li>
+</ul>
+<p>Many elements have attributes where you can configure how it will behave.&nbsp;</p>
+<p><span style="border-radius: 12px; border: 2px solid #696969; background: #ffffff; padding: 0.4em; width: auto; font-weight: bold; height: 1.1em; font-size: 0.7em; color: #000000;">Review</span> <a rel="noopener" href="https://www.w3schools.com/html/html_attributes.asp">https://www.w3schools.com/html/html_attributes.asp</a></p>
+<p><span style="border-radius: 12px; border: 2px solid #9d1fd4; background: #ffffff; padding: 0.4em; width: auto; font-weight: bold; height: 1.1em; font-size: 0.7em; color: #9d1fd4;">Understand</span> Key components to focus on:</p>
+<ul>
+<li>Not all elements have attributes</li>
+<li>All elements are in the format <code>name="value"</code>&nbsp;</li>
+<li>To put attributes in the opening tag only</li>
+<li>Recommendations around case, values and quotes</li>
+</ul>
+<p>Some elements can be nested, and some should never be nested. The name for elements that never should be nested is block-level, and those that are nested are called inline.&nbsp;</p>
+<p><span style="border-radius: 12px; border: 2px solid #696969; background: #ffffff; padding: 0.4em; width: auto; font-weight: bold; height: 1.1em; font-size: 0.7em; color: #000000;">Review</span> <a rel="noopener" href="https://www.w3schools.com/html/html_blocks.asp">https://www.w3schools.com/html/html_blocks.asp</a></p>
+<p></p>
+
+<!--Apply style to elements-->
+
+<h1>Applying styles to HTML elements</h1>
+
+<h3>The Default Stylesheet</h3>
+<p>All HTML elements have default CSS elements applied to them. For example, the HTML tag <code>h1</code> has the following CSS applied by default in Chrome:</p>
+<pre><code>h1  {
+        display: block;
+        font-size: 2em;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+    }
+</code></pre>
+<p>These style elements make up the default for all elements using h1 and the only way to change the default style is to provide your own CSS to "override" it with your own declarations. The bundle of default declarations for elements is called the <i>User-Agent-Stylesheet</i> and all web browsers provide a similar template, although they can differ slightly (the default above is from Chrome's <i>User-Agent-Stylesheet</i>).&nbsp;</p>
+<p><span class="circletext ref">Reference</span> A list of css defaults <a href="https://www.w3schools.com/csSref/css_default_values.asp">https://www.w3schools.com/csSref/css_default_values.asp</a></p>
+<h3>Three Ways to add CSS to your page</h3>
+<p>There are three ways to tell a browser to override the default style:</p>
+<p><span style="border-radius: 12px; border: 2px solid #696969; background: #ffffff; padding: 0.4em; width: auto; font-weight: bold; height: 1.1em; font-size: 0.7em; color: #000000;">Review</span>&nbsp;How to apply CSS: <a rel="noopener" href="https://www.w3schools.com/css/css_howto.asp">https://www.w3schools.com/css/css_howto.asp</a></p>
+<p><span style="border-radius: 12px; border: 2px solid #9d1fd4; background: #ffffff; padding: 0.4em; width: auto; font-weight: bold; height: 1.1em; font-size: 0.7em; color: #9d1fd4;">Understand</span> Key components in this page to focus on:</p>
+<ul>
+<li>Know how to identify the three methods</li>
+<li>Understand how to use the Internal and Inline methods (for now).&nbsp;</li>
+</ul>
+<p>The Inline method is not great to actually develop with, but is a great way to learn and override settings directly on an element. Typically professional websites will use the external method, but for simplicity we will focus on using the internal method now to understand the basics.&nbsp;</p>
+<h3>Inline VS Selectors</h3>
+<p>Inline CSS uses the HTML property <code>style=</code> to directly apply one or more declaration to that element. If the style is compartmentalized into the internal &lt;style&gt; section of a document then there needs to be a way for the web browser to know how to apply those style declarations to the code. For CSS, it uses a selector. You can think of a selector as a search on the page for anything matching what it is.&nbsp;</p>
+<p><img src="https://www.w3schools.com/css/img_selector.gif" alt="Selector" title="Selector" width="407" height="85" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p>The most simple selectors are naming the HTML tag elements themselves. So for some style to apply to all headings, you can use the selector h1. This way anytime the browser sees an HTML tag h1 it will apply that style.&nbsp;</p>
+<p>There are other types of <a rel="noopener" href="https://www.w3schools.com/cssref/css_selectors.asp">selectors</a>, but for now just focus on using the HTML tags themselves.&nbsp;</p>
+
+<h2>Specificity: CSS Listing Order Matters</h2>
+<p>A web page applies style in a predictable way. If you style an HTML element to show in blue, then purple which one should be the final colour? The simple rule is last one is the one that will win. Unfortunately it isn't as simple as that, as CSS uses a scoring method called Specificity. It's complex and not important to understand how to calculate this, but to just understand how it works with a few basic selector and CSS types.&nbsp;</p>
+<p><a rel="noopener" href="https://www.w3schools.com/css/css_specificity.asp">https://www.w3schools.com/css/css_specificity.asp</a></p>
+<p><span class="circletext grey">TL;DR</span> Basically the more specific a style declaration the more important it is. Here is a generalization:</p>
+<ol>
+<li>Inline styles are most specific (since they're on the HTML element as a property!)</li>
+<li>IDs are like names for elements and (technically) can only occur once, so are next most specific</li>
+<li>Classes are the next most specific</li>
+<li>Elements are the last in the rules.&nbsp;</li>
+</ol>
+<p>At this point in our lessons we are focusing on inline and inline CSS styles, so knowing that inline style declaration will always override an element from the <code>&lt;style&gt;</code> section of the document is what you need to know.&nbsp;</p>
+<p></p>
+
+
+<div id="smm">&copy; 2022 Shawn Morgan</div>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

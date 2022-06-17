@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Automatically highlights code https://highlightjs.org/-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/a11y-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js"></script>
+
+<link rel="stylesheet" href="smdesign.css">
+<title>Geom101 - Images</title>
+</head>
+<body>
+    <div id="title"><img src="images\FlemingGIS_White.svg" height="32">&nbsp;<span id="titletext">Geom101: Images on Web Pages</span></div>
+
+<h1>Introduction</h1>
+<p>The web would not be the same if it were not for images being displayed on pages. Here are some key items to understand around images, their placement, and how to best work with them. This documentation is an addendum to the provided documentation at <a rel="noopener" href="https://www.w3schools.com/html/html_images.asp">https://www.w3schools.com/html/html_images.asp</a>.</p>
+<pre><code>&lt;img src="https://www.w3schools.com/html/pic_trulli.jpg"&gt;</code></pre>
+<p>The <code>src=</code> must be a valid URL that points to an image. The URL can be relative (for images on the same web server) or fully referenced (for images on other web servers).&nbsp;</p>
+<h1>How images are "loaded"</h1>
+<p>When the initial web page document is being interpreted by your web browser, it is reading line-by-line from the top to the bottom in the document. When it sees a reference to an image it will then spawn a new process to get that image and continue itself interpreting the html document. Therefore it is important for the target space to have a size so the remaining parts of the document can be properly formatted around this yet-to-be-loaded image. That is the purpose of specifying the height and width of the image.&nbsp;</p>
+<p>Specifying the height and width's purpose is to know what the actual size of the image coming in will be. It is not meant to be a method to "resize" the image you are loading. While it is possible to use these html properties to resize an image, it is a bad practice and can significantly impact the page load time or even quality of the image. It is therefore important to specify the height and width of the actual image, not just set the size you want.&nbsp;</p>
+
+<h1>What is my image size?</h1>
+<p>Take a look at the native size of an image by opening it directly using the url (<a rel="noopener" href="https://www.w3schools.com/html/pic_trulli.jpg">https://www.w3schools.com/html/pic_trulli.jpg</a>), or if already on the web page in Chrome, <em>right-click</em> and select <em>open image in new tab</em>. Try that on one of the three references to that image here:</p>
+<p><img src="https://www.w3schools.com/html/pic_trulli.jpg" width="50" height="87"> <img src="https://www.w3schools.com/html/pic_trulli.jpg" width="245" height="87"> <img src="https://www.w3schools.com/html/pic_trulli.jpg" width="131" height="87"></p>
+
+<p><span class="circletext red">Warning</span> The images displayed above are scaled and is a demonstration of what <i><u>not</u></i>&nbsp;to do.&nbsp;</p>
+
+<p>Opening the image directly shows the native (or actual) size of the image in the browser's title. The image above's actual JPG is 500x333 pixels in size, where the width is 500 pixels and the height is 333 pixels. Therefore, the only correct HTML statement with the correct height and width in pixels specified would be:</p>
+<pre><code>&lt;img src="https://www.w3schools.com/html/pic_trulli.jpg" height="500" width="333"&gt;</code></pre>
+<h2>Best practices and required for this course</h2>
+
+<p><span class="circletext grey">TL;DR</span> The best practice is to specify the actual size of the image to be opened.</p>
+
+<p>While changing the height and width reference does skew or stretch the image on display, it is not the intention of these properties. An image file is compressed and optimized to at the native resolution and showing it any other size is either inefficient in client-server data transmission, can cause poor display quality and causes other issues with accessibility, browser memory usage and performance.</p>
+
+<h2>CSS Style for image size</h2>
+<p>Another method to specify the size of an image is using CSS properties. Some&nbsp;</p>
+<pre><code>&lt;img src="https://www.w3schools.com/html/pic_trulli.jpg" style="width:500px;width:333px;"&gt;</code></pre>
+<p>Either method is fine, but be consistent. Note that when specifying the height and width in CSS you must specify the units (in the case shown here, px are pixels.&nbsp;</p>
+<h2>What if I don't want <em>that</em> to be the size of my image?</h2>
+<p>You should open the image, change the dimensions to be what you want, then re-save the newly optimized image. Adobe Photoshop, the free open source <a rel="noopener" href="https://www.getpaint.net/">Paint.net</a>, or the website <a rel="noopener" href="https://www.photopea.com/">https://www.photopea.com/</a> can be used to do this. If the image is to be "scaled" on your page where the size is dependent on the page height or width it is possible to calculate what the maximum image display size should be, then resample the image to that. Then you must set a CSS property of max-width to be the maximum size.&nbsp;</p>
+<h1>ALT what?</h1>
+<p><span class="circletext red">Required</span> Accessibility standards require all images to include an ALT parameter to describe the image. That would look like this:</p>
+<pre><code>&lt;img alt="Trulli - traditional Apulian dry stone hut with a conical roof" src="https://www.w3schools.com/html/pic_trulli.jpg" style="width:500px;width:333px;"&gt;</code></pre>
+<p>Note that the order of the parameters in an opening HTML tag do not matter, but it is best practice to be consistent in your document.&nbsp;</p>
+<p><span class="circletext read">Read</span> ALT tag documentation: <a href="https://www.w3schools.com/tags/att_img_alt.asp">https://www.w3schools.com/tags/att_img_alt.asp</a></p>
+<h1>Image types: PNG, JPG, GIF, SVG!</h1>
+<p>There are many image formats available to choose from.</p>
+<p>This web page has an excellent discussion on this:</p>
+<p><a rel="noopener" href="https://blog.imagekit.io/jpeg-vs-png-vs-gif-which-image-format-to-use-and-when-c8913ae3e01d?gi=99c48f817bdc">https://blog.imagekit.io/jpeg-vs-png-vs-gif-which-image-format-to-use-and-when-c8913ae3e01d?gi=99c48f817bdc</a></p>
+<p>Each has its advantages and disadvantages, but generally speaking here is a short version:</p>
+<ul>
+<li>Images containing text or logos should be PNG to be most clear</li>
+<li>Images that have transparent components must be PNG or GIF</li>
+<li>Images that have require an "Alpha Channel" where some things are translucent must be PNG32.&nbsp;</li>
+<li>Pictures of actual things should be JPG (or name it JPEG, just be consistent!)</li>
+<li>GIF is rarely used, except with mini-animations.&nbsp;</li>
+</ul>
+<h2>What is an SVG?</h2>
+<p>This is a cool VECTOR standard for displaying images on the web! It's not necessary to understand for this course, but a great alternative to having multiple sizes of logos for a single webpage. See <a rel="noopener" href="https://www.w3schools.com/graphics/svg_intro.asp">https://www.w3schools.com/graphics/svg_intro.asp</a> for more details.&nbsp;</p>
+
+<div id="smm">&copy; 2022 Shawn Morgan</div>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

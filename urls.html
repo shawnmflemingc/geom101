@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Automatically highlights code https://highlightjs.org/-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/a11y-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js"></script>
+
+<link rel="stylesheet" href="smdesign.css">
+<title>Geom101 - HTTP and URLs</title>
+</head>
+<body>
+<div id="title"><img src="images\FlemingGIS_White.svg" height="32">&nbsp;<span id="titletext">Geom101: Understanding HTTP and URLs</span></div>
+<h1>Learning Goals</h1>
+<p>
+    <ul>
+        <li>Describe how HTTP works</li>
+        <li>Know where to look up HTTP response messages</li>
+        <li>Identify the default TCP ports used in HTTP</li>
+        <li>Explain all parts of a URL, including what are required</li>
+        <li>Identify the parts of a URL</li>
+        <li>Know how and when to encode portions of a URL</li>
+    </ul>
+</p>
+
+<h1>HTTP</h1>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work">internet and web</a> are often used interchangeably but do not mean the same. The internet is the network of interconnecting computers where as the web is a specific part of that network. Particularly, the web are a series of computers always running and <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works">listening for requests for content</a>. That content is (typically) web pages, but can also be files (like PDFs, JPG images or other documents), or services (like Esri's mapping services).</p>
+<p>Everything on the web is accessed in one way: using <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL">Uniform Resource Locators</a>, or as we commonly know them as <strong>URLs</strong>. The actual procedure to make a request for something on the web is called a Protocol, which the web's is called Hypertext Transfer Protocol, or HTTP for short. The protocol specification outlines how to make the request for a server and how to expect that server to reply.</p>
+<p>Most websites and browsers always try to use HTTPS (the S is for Secure) to help protect the request and content returned. These secured requests differ from normal HTTP requests by scrambling the important parts of the request and the returned information, but otherwise works identically to an HTTP request.</p>
+<h2>404: Page not found</h2>
+<p>You likely have seen a 404 error (look at these fun <a target="_blank" href="https://blog.hubspot.com/blog/tabid/6307/bid/33766/10-clever-website-error-messages-from-creative-companies.aspx">404 errors</a>). A "404" is a standard HTTP response code for a document not found and has become a <a href="https://itelementaryschool.com/404-page-not-found-error-message-explained/" target="_blank">meme</a>. When a resource requested using HTTP cannot be found, an error page is returned telling you that it cannot be found (Http error 404). There are numerous other standard response codes for various conditions, including one for OK! (200).</p>
+
+<ol>
+<li>Informational responses (100–199)</li>
+<li>Successful responses (200–299)</li>
+<li>Redirection messages (300–399)</li>
+<li>Client error responses (400–499)</li>
+<li>Server error responses (500–599)</il>
+</ol>
+
+<p><span class="circletext grey">Optional</span> These codes aren't important to memorize, but understanding where to look them up and what they are communicating is important. The full list of codes can be read about here: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</a></p>
+<h2>HTTP request explained</h2>
+<p>All requests on the internet are made in plain text (think documents created in notepad on your computer). All servers are listening for requests on a single TCP port on that computer.</p>
+<p>Think of a TCP port like the floor number in an apartment building, where a client (the person) enters the building and goes to a particular floor to ask questions of the person waiting there. A service is like a person waiting at that floor for questions. It is important to understand not all floors have someone waiting to ask questions and certain floors can even be "blocked".</p>
+<p>The main types of requests are GET, POST and HEAD <small>(<a href="https://www.lifewire.com/hypertext-transfer-protocol-817944" target="_blank">source</a>)</small>:</p>
+<ul><li><strong>HTTP GET:</strong> Messages sent to a server contain only a URL. Zero or more optional data parameters may be appended to the end of the URL. The server processes the optional data portion of the URL, if present, and returns the result (a web page or element of a web page) to the browser.</li>
+<li><strong>HTTP POST:</strong> Messages place any optional data parameters in the body of the request message rather than adding them to the end of the URL.
+</li><li><strong>HTTP HEAD:</strong> Requests work the same as GET requests. Instead of replying with the full contents of the URL, the server sends back only the header information (contained inside the HTML section).</li></ul>
+<p>Requests are made in a particular order and format (like a form you would fill out) and sent to the server. Here is an example request: </p>
+<p><img src="images/httpexplained.png" alt="HTTP Explained" style="width: 100%; max-width: 644px"></p>
+<p>The first word in the request is what you want to do: in this case to <code>GET</code> the document located at folder <code>/doc/</code> named <code>test.html</code> and the format of the text format for the request is <code>HTTP 1.1</code>. After this there are many lines related to what the request is, how it should be sent back to the browser making the request (called <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Glossary/Request_header">request headers</a>), and any URL parameters supplied in the request (last line). The whole request is supplied in URLs and header lines by the browser. The URLs themselves are clearly visible to you, the user (look at the top of most web browsers).</p>
+<h1>Uniform Resource Locators (URLs)</h1>
+<p>URLs are what we as a user provides to request something on the web. They are also used in web documents to refer to other web resources, like pictures on the page, documents that can be downloaded (PDFs, DOCX, or ZIP files), and anything else on the 'web'. So understanding how these are formed is critical to understanding the web.</p>
+<img src="images/urlcomponents.png" style="width: 100%; max-width: 1034px;">
+<p><span class="circletext grey">Learn More</span> URLs are the foundation of the web and important to understand. <br><a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL</a></p>
+<p>A web browser is really two parts, an interpreter and a tool to perform requests. You, as a user, type a URL into the browser (or use a search engine to find) and "navigate" to a document containing some content you want to see. The interpreter part is about HTML and CSS, which we will learn later. The requests addresses are called URLs and have a few parts at their core:</p>
+<div>
+         <table class="basetable">
+        <thead>
+          <tr>
+            <th class="tg-top">Part</th>
+            <th class="tg-top">Example</th>
+            <th class="tg-top">Description</th>
+            <th class="tg-top">Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tg-text">Scheme</td>
+            <td class="tg-code">HTTPS://</td>
+            <td class="tg-text">The first part of a URL is the protocol (how to talk with the web server). For web traffic, the scheme will always be either HTTP (unsecured) or HTTPS (secured). Other schemes use similar formats to URLs (like FTP) but are beyond the scope of this discussion.</td>
+            <td class="tg-centre">Yes</td>
+          </tr>
+          <tr>
+            <td class="tg-text">Domain</td>
+            <td class="tg-code">www.example.com</td>
+            <td class="tg-text">Domains have usually 3 parts, subdomain (www), domain name (example) and top level domain (.com). The domain name (example) is purchased and registered with the administrator of the top level domain (.com) and the owner of that domain can usually create any number of subdomains without further fees. </td>
+            <td class="tg-centre">Yes</td>
+          </tr>
+          <tr>
+            <td class="tg-text">TCP Port</td>
+            <td class="tg-code">:443</td>
+            <td class="tg-text">A web server can only bind with one port per protocol scheme. Most web servers listen for both HTTP (not-secured) and HTTPS (secured) requests, each taking one port. The default port for HTTP is 80 and for HTTPS is 443. Web browsers will automatically use the default port if not specified, which is why this required part is rarely seen. </td>
+            <td class="tg-centre">Yes</td>
+          </tr>
+          <tr>
+            <td class="tg-text">Path and File</td>
+            <td class="tg-code">/path/to/filename.html</td>
+            <td class="tg-text">Any request to a web server can specify what file or resource you want to see, often entered as file name. If none are specified a server can try and find a default file on the server and return that. The default file is often named index.htm, index.html, or default.htm, but can be anything the administrator of the server wants. When a request to the server without this portion it is the server's job to look for the default and return that file. </td>
+            <td class="tg-centre">No</td>
+          </tr>
+          <tr>
+            <td class="tg-text">Parameters</td>
+            <td class="tg-code">?key1=value&amp;key2=value</td>
+            <td class="tg-text">Some web pages act like programs where the request will have parameters (similar to programming variables). A ? (question mark) is placed to stop the file portion of the URL and begin the parameter section. Each parameter has a unique name and a value assigned to it that will be passed to the requesting page. The order of the parameters do not matter as long as it is always in the format NAME=VALUE. The value also must be encoded to not be confused with the URL structure (more on that later) and, when there are multiple parameters, each key=value pair is separated by an ampersand &amp;. </td>
+            <td class="tg-centre">No</td>
+          </tr>
+          <tr>
+            <td class="tg-text">Anchor</td>
+            <td class="tg-code">#anchorname</td>
+            <td class="tg-text">Rather than opening a web page at the top you can create page anchors to focus the browser's attention to that specific location. This is like jumping to a chapter in a book, but is on the one page. It is often used to jump to specific headings or titles on the page. </td>
+            <td class="tg-centre">No</td>
+          </tr>
+        </tbody>
+        </table>
+</div>
+<h1>URL Encoding</h1>
+<p>The characters <code>/?&#:</code> are all used in the formation of a URL. What if a directory, file or parameter key or value were to use one of these special characters? The URL would become broken--when do you mean to literally use one of these characters, and when is it part of the URL itself? The solution is to encode the literal characters, sort of like putting quotes around a string to keep spaces.</p>
+<p>Encoding in URLs is done by converting the characters to hexadecimal (nicknamed hex) codes. All characters on a computer are actually represented using numbers, 0 through 255 for the standard character set including all numbers, upper and lower case A through Z, and any punctuation. You can see a list of these numbers on the <a href="https://www.asciitable.com/">https://www.asciitable.com/</a>.</p>
+<p>HEX is just a different way to count, instead of being the decimal system (10-based, 0-9) it is a way to count using 16-base using numbers and the letters A through F.</p>
+<ol>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+    <li>E</li>
+    <li>F</li>
+</ol>
+<p>Now in a URL when you want to use the ? character as a parameter value lets say, you need to encode it. Looking at the <a href="https://www.asciitable.com/">ASCII table</a> the question mark character is represented by hexadecimal 3F. To tell the URL the next  characters are to be literal and in HEX we use the character % to prefix it. Here is an example URL with this used to add a parameter value of <code>Why?</code></p>
+<pre><code>https://www.example.com/filename.html?searchfor=Why%3F</code></pre>
+
+<p>The first ? question mark character denotes the change from filename to parameters, and the second one is encoded because the question mark character appearing again would confuse the web server. This is why no other characters are encoded, only the second question mark. All other special characters are part of the URL structure itself. Only when a character is meant literally does it need encoding. </p>
+<h2>Characters to encode</h2>
+<p>While every character can be encoded (since they all have ASCII codes), URLs only encode special characters that may cause problems with the URL being properly interpreted. Some web servers are more strict and other's more relaxed--so how do you know what to do?. The best rule is to encode all non-standard characters. That is anything that is not A-Z (or a-z), and numbers (0-9 plus . (decimal)). </p>
+<div>
+    <table class="basetable">
+        <thead>
+          <tr>
+            <th class="tg-top">Char</th>
+            <th class="tg-top">Encoded</th>
+            <th class="tg-top">Why must all literal uses be encoded?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tg-centre">/</td>
+            <td class="tg-code">%2F</td>
+            <td>The / character is used as a separator in the URL between scheme, domain and file paths. </td>
+          </tr>
+          <tr>
+            <td class="tg-centre">:</td>
+            <td class="tg-code">%3A</td>
+            <td>Used in the start of the URL before the scheme (http://)</td>
+          </tr>
+          <tr>
+            <td class="tg-centre">?</td>
+            <td class="tg-code">%3F</td>
+            <td>Is the separator between the filename portion and parameters</td>
+          </tr>
+          <tr>
+            <td class="tg-centre">&amp;</td>
+            <td class="tg-code">%26</td>
+            <td>A separator when multiple parameters are included</td>
+          </tr>
+          <tr>
+            <td class="tg-centre">%</td>
+            <td class="tg-code">%25</td>
+            <td>This character is the prefix for encoding, so must be itself encoded</td>
+          </tr>
+          <tr>
+            <td class="tg-centre">#</td>
+            <td class="tg-code">%23</td>
+            <td>The pound character is used as an anchor on the page for navigating from a URL</td>
+          </tr>
+        </tbody>
+        </table>
+</div>
+<p>These 6 characters can even have exceptions! It is confusing, and why for this course we say just encode all non-alpha numeric characters if in doubt.</p>
+<h1>Absolute and Relative URLs</h1>
+<p>URLs point to resources on the web. While we generally treat them like they are pointing at a web page, that web page itself needs to also point to files it wants to display (like images). </p><p>An absolute URL contains all the parts described in this document and by itself can be used to find a document. A relative path is used to point at assets to something that the absolute path is already known for and locate that item by combining the two. It is like you pointing at an object in the same room and saying "it is over there" rather than giving the full street address then describing how to go inside and locate that object in the room you currently are in</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#absolute_urls_vs_relative_urls">https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#absolute_urls_vs_relative_urls</a></p>
+<p>A URL that is relative needs an absolute URL to properly translate it to a full valid URL. There are a few key tools that allow you to build a URL that is relative. Below are the three most common related to how to move between directories:</p>
+<div>
+    <table class="basetable">
+        <thead>
+          <tr>
+            <th class="tg-top">Task</th>
+            <th class="tg-top">Code</th>
+            <th class="tg-top">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Current folder</td>
+            <td class="tg-code">./</td>
+            <td>Look for the file in the same folder. Often this is not necessary and just the actual file specified</td>
+          </tr>
+          <tr>
+            <td>Back one level</td>
+            <td class="tg-code">../</td>
+            <td>This means go back one folder and look there. These can be chained together to tell it to go back two or more folders</td>
+          </tr>
+          <tr>
+            <td>Go back to root</td>
+            <td class="tg-code">/</td>
+            <td>A slash by itself means ignore the current path and start back at the beginning of the domain</td>
+          </tr>
+        </tbody>
+        </table>
+</div>
+<p>Remember, relative URLs require a referencing document to resolve. With the referencing document's absolute path the relative URL can be determined and object referenced properly loaded.</p>
+<div id="smm">&copy; 2022 Shawn Morgan</div>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
